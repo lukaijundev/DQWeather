@@ -36,7 +36,7 @@ public class Province extends DataSupport {
     }
 
 
-    private int getId(){
+    public  int getId(){
 
         return id;
     }
