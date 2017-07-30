@@ -3,11 +3,11 @@ package com.example.dqweather.gson;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Administrator on 2017/7/26.
+ * Created by Administrator on 2017/7/29.
  */
 
 public class Basic {
-    @SerializedName("City")
+    @SerializedName("city")
     public String cityName;
 
     @SerializedName("id")
@@ -19,7 +19,4 @@ public class Basic {
         @SerializedName("loc")
         public String updateTime;
     }
-
-
-
 }

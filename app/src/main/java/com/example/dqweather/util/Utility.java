@@ -1,12 +1,14 @@
 package com.example.dqweather.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.dqweather.db.City;
 import com.example.dqweather.db.County;
 import com.example.dqweather.db.Province;
 import com.example.dqweather.gson.Weather;
 import com.google.gson.Gson;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,6 +19,7 @@ import org.json.JSONObject;
  */
 
 public class Utility {
+    private static final String TAG = "Utility";
 
 //    解析和处理服务器返回省级数据
     public static boolean handleProvinceResponse(String response){
@@ -24,8 +27,9 @@ public class Utility {
             try {
                 JSONArray allprovinces=new JSONArray(response);
                 for(int i=0;i<allprovinces.length();i++){
-                    Province province=new Province();
                     JSONObject provinceObject=allprovinces.getJSONObject(i);
+                    Province province=new Province();
+
                     province.setProvinceName(provinceObject.getString("name"));
                     province.setProvinceCode(provinceObject.getInt("id"));
                     province.save();
@@ -45,6 +49,8 @@ public class Utility {
         if(!TextUtils.isEmpty(reponse)){
             try {
                 JSONArray allcities=new JSONArray(reponse);
+                Log.d(TAG, "handleCityReponse: "+allcities);
+
                 for(int i=0;i<allcities.length();i++){
                     JSONObject cityObject=allcities.getJSONObject(i);
                     City city=new City();
